@@ -18,8 +18,8 @@ cabal-version:       >=1.10
 library
   hs-source-dirs:      src
   exposed-modules:     Servant.Elm
-  other-modules:       Servant.Elm.Client
-                     , Servant.Elm.Generate
+                     , Servant.Elm.Client
+  other-modules:       Servant.Elm.Generate
                      , Servant.Elm.Request
   build-depends:       base >= 4.7 && < 5
                      , lens
