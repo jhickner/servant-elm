@@ -11,7 +11,7 @@ import           Elm                 (ToElmType, toElmDecoderWithSources,
                                       toElmEncoderWithSources,
                                       toElmTypeWithSources)
 import           GHC.TypeLits        (KnownSymbol, symbolVal)
-import           Servant.API         ((:<|>), (:>), Capture, Get, Post,
+import           Servant.API         ((:<|>), (:>), Capture, Get, Post, Delete,
                                       QueryFlag, QueryParam, QueryParams,
                                       ReqBody)
 import           Servant.Foreign     (ArgType (..), QueryArg (..), Segment (..),
@@ -139,6 +139,10 @@ instance {-# OVERLAPPING #-} HasElmClient (Post (ct ': cts) ()) where
   elmClientWithRoute Proxy request =
     [completeRequest "POST" request]
 
+-- Delete '[cts] ()
+instance {-# OVERLAPPING #-} HasElmClient (Delete (ct ': cts) ()) where
+  elmClientWithRoute Proxy request =
+    [completeRequest "Delete" request]
 
 completeRequestWithType :: ToElmType a => Proxy a -> String -> Request -> Request
 completeRequestWithType proxy method =
